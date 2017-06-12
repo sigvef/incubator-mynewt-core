@@ -68,6 +68,9 @@ void SX1276IoInit( void )
     spi_settings.baudrate = MYNEWT_VAL(SX1276_SPI_BAUDRATE);
     spi_settings.word_size = HAL_SPI_WORD_SIZE_8BIT;
 
+    rc = hal_spi_disable(RADIO_SPI_IDX);
+    assert(rc == 0);
+
     rc = hal_spi_config(RADIO_SPI_IDX, &spi_settings);
     assert(rc == 0);
 
